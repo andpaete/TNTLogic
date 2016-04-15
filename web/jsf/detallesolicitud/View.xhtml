@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDetallesolicitudTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDetallesolicitudLabel_iddetallesolicitud}"/>
+                    <h:outputText value="#{detallesolicitudController.selected.iddetallesolicitud}" title="#{bundle.ViewDetallesolicitudTitle_iddetallesolicitud}"/>
+                    <h:outputText value="#{bundle.ViewDetallesolicitudLabel_distancia}"/>
+                    <h:outputText value="#{detallesolicitudController.selected.distancia}" title="#{bundle.ViewDetallesolicitudTitle_distancia}"/>
+                    <h:outputText value="#{bundle.ViewDetallesolicitudLabel_costotransporte}"/>
+                    <h:outputText value="#{detallesolicitudController.selected.costotransporte}" title="#{bundle.ViewDetallesolicitudTitle_costotransporte}"/>
+                    <h:outputText value="#{bundle.ViewDetallesolicitudLabel_idsolicitud}"/>
+                    <h:outputText value="#{detallesolicitudController.selected.idsolicitud}" title="#{bundle.ViewDetallesolicitudTitle_idsolicitud}"/>
+                    <h:outputText value="#{bundle.ViewDetallesolicitudLabel_idmercancia}"/>
+                    <h:outputText value="#{detallesolicitudController.selected.idmercancia}" title="#{bundle.ViewDetallesolicitudTitle_idmercancia}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detallesolicitudController.destroyAndView}" value="#{bundle.ViewDetallesolicitudDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDetallesolicitudEditLink}"/>
+                <br />
+                <h:commandLink action="#{detallesolicitudController.prepareCreate}" value="#{bundle.ViewDetallesolicitudCreateLink}" />
+                <br />
+                <h:commandLink action="#{detallesolicitudController.prepareList}" value="#{bundle.ViewDetallesolicitudShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDetallesolicitudIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

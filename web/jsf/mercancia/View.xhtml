@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMercanciaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMercanciaLabel_idmercancia}"/>
+                    <h:outputText value="#{mercanciaController.selected.idmercancia}" title="#{bundle.ViewMercanciaTitle_idmercancia}"/>
+                    <h:outputText value="#{bundle.ViewMercanciaLabel_nombre}"/>
+                    <h:outputText value="#{mercanciaController.selected.nombre}" title="#{bundle.ViewMercanciaTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewMercanciaLabel_peso}"/>
+                    <h:outputText value="#{mercanciaController.selected.peso}" title="#{bundle.ViewMercanciaTitle_peso}"/>
+                    <h:outputText value="#{bundle.ViewMercanciaLabel_volumen}"/>
+                    <h:outputText value="#{mercanciaController.selected.volumen}" title="#{bundle.ViewMercanciaTitle_volumen}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mercanciaController.destroyAndView}" value="#{bundle.ViewMercanciaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMercanciaEditLink}"/>
+                <br />
+                <h:commandLink action="#{mercanciaController.prepareCreate}" value="#{bundle.ViewMercanciaCreateLink}" />
+                <br />
+                <h:commandLink action="#{mercanciaController.prepareList}" value="#{bundle.ViewMercanciaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMercanciaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

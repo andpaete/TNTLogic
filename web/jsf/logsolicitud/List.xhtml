@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListLogsolicitudTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListLogsolicitudEmpty}" rendered="#{logsolicitudController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{logsolicitudController.items.rowCount > 0}">
+                    <h:outputText value="#{logsolicitudController.pagination.pageFirstItem + 1}..#{logsolicitudController.pagination.pageLastItem + 1}/#{logsolicitudController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{logsolicitudController.previous}" value="#{bundle.Previous} #{logsolicitudController.pagination.pageSize}" rendered="#{logsolicitudController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{logsolicitudController.next}" value="#{bundle.Next} #{logsolicitudController.pagination.pageSize}" rendered="#{logsolicitudController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{logsolicitudController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogsolicitudTitle_idlogsolicitud}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idlogsolicitud}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogsolicitudTitle_fecharegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecharegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogsolicitudTitle_idsolicitud}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idsolicitud}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogsolicitudTitle_idestado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idestado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogsolicitudTitle_idcliente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idcliente}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{logsolicitudController.prepareView}" value="#{bundle.ListLogsolicitudViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{logsolicitudController.prepareEdit}" value="#{bundle.ListLogsolicitudEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{logsolicitudController.destroy}" value="#{bundle.ListLogsolicitudDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{logsolicitudController.prepareCreate}" value="#{bundle.ListLogsolicitudCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListLogsolicitudIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

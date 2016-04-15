@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_idsede}" for="idsede" />
+                    <h:inputText id="idsede" value="#{sedeController.selected.idsede}" title="#{bundle.CreateSedeTitle_idsede}" required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_idsede}"/>
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_idciudad}" for="idciudad" />
+                    <h:inputText id="idciudad" value="#{sedeController.selected.idciudad}" title="#{bundle.CreateSedeTitle_idciudad}" required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_idciudad}"/>
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{sedeController.selected.nombre}" title="#{bundle.CreateSedeTitle_nombre}" required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{sedeController.selected.estado}" title="#{bundle.CreateSedeTitle_estado}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sedeController.create}" value="#{bundle.CreateSedeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sedeController.prepareList}" value="#{bundle.CreateSedeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSedeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

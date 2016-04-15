@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSedeCiudadesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSedeCiudadesLabel_ciudadprincipal}" for="ciudadprincipal" />
+                    <h:inputText id="ciudadprincipal" value="#{sedeCiudadesController.selected.ciudadprincipal}" title="#{bundle.CreateSedeCiudadesTitle_ciudadprincipal}" required="true" requiredMessage="#{bundle.CreateSedeCiudadesRequiredMessage_ciudadprincipal}"/>
+                    <h:outputLabel value="#{bundle.CreateSedeCiudadesLabel_idsede}" for="idsede" />
+                    <h:selectOneMenu id="idsede" value="#{sedeCiudadesController.selected.idsede}" title="#{bundle.CreateSedeCiudadesTitle_idsede}" required="true" requiredMessage="#{bundle.CreateSedeCiudadesRequiredMessage_idsede}">
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSedeCiudadesLabel_idciudad}" for="idciudad" />
+                    <h:selectOneMenu id="idciudad" value="#{sedeCiudadesController.selected.idciudad}" title="#{bundle.CreateSedeCiudadesTitle_idciudad}" required="true" requiredMessage="#{bundle.CreateSedeCiudadesRequiredMessage_idciudad}">
+                        <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sedeCiudadesController.create}" value="#{bundle.CreateSedeCiudadesSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sedeCiudadesController.prepareList}" value="#{bundle.CreateSedeCiudadesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSedeCiudadesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

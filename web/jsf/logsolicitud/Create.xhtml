@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateLogsolicitudTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateLogsolicitudLabel_idlogsolicitud}" for="idlogsolicitud" />
+                    <h:inputText id="idlogsolicitud" value="#{logsolicitudController.selected.idlogsolicitud}" title="#{bundle.CreateLogsolicitudTitle_idlogsolicitud}" required="true" requiredMessage="#{bundle.CreateLogsolicitudRequiredMessage_idlogsolicitud}"/>
+                    <h:outputLabel value="#{bundle.CreateLogsolicitudLabel_fecharegistro}" for="fecharegistro" />
+                    <h:inputText id="fecharegistro" value="#{logsolicitudController.selected.fecharegistro}" title="#{bundle.CreateLogsolicitudTitle_fecharegistro}" required="true" requiredMessage="#{bundle.CreateLogsolicitudRequiredMessage_fecharegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateLogsolicitudLabel_idsolicitud}" for="idsolicitud" />
+                    <h:selectOneMenu id="idsolicitud" value="#{logsolicitudController.selected.idsolicitud}" title="#{bundle.CreateLogsolicitudTitle_idsolicitud}" required="true" requiredMessage="#{bundle.CreateLogsolicitudRequiredMessage_idsolicitud}">
+                        <f:selectItems value="#{solicitudController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateLogsolicitudLabel_idestado}" for="idestado" />
+                    <h:selectOneMenu id="idestado" value="#{logsolicitudController.selected.idestado}" title="#{bundle.CreateLogsolicitudTitle_idestado}" required="true" requiredMessage="#{bundle.CreateLogsolicitudRequiredMessage_idestado}">
+                        <f:selectItems value="#{estadosolicitudController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateLogsolicitudLabel_idcliente}" for="idcliente" />
+                    <h:selectOneMenu id="idcliente" value="#{logsolicitudController.selected.idcliente}" title="#{bundle.CreateLogsolicitudTitle_idcliente}" >
+                        <f:selectItems value="#{clientesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{logsolicitudController.create}" value="#{bundle.CreateLogsolicitudSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{logsolicitudController.prepareList}" value="#{bundle.CreateLogsolicitudShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateLogsolicitudIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

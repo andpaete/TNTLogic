@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewLogsolicitudTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewLogsolicitudLabel_idlogsolicitud}"/>
+                    <h:outputText value="#{logsolicitudController.selected.idlogsolicitud}" title="#{bundle.ViewLogsolicitudTitle_idlogsolicitud}"/>
+                    <h:outputText value="#{bundle.ViewLogsolicitudLabel_fecharegistro}"/>
+                    <h:outputText value="#{logsolicitudController.selected.fecharegistro}" title="#{bundle.ViewLogsolicitudTitle_fecharegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewLogsolicitudLabel_idsolicitud}"/>
+                    <h:outputText value="#{logsolicitudController.selected.idsolicitud}" title="#{bundle.ViewLogsolicitudTitle_idsolicitud}"/>
+                    <h:outputText value="#{bundle.ViewLogsolicitudLabel_idestado}"/>
+                    <h:outputText value="#{logsolicitudController.selected.idestado}" title="#{bundle.ViewLogsolicitudTitle_idestado}"/>
+                    <h:outputText value="#{bundle.ViewLogsolicitudLabel_idcliente}"/>
+                    <h:outputText value="#{logsolicitudController.selected.idcliente}" title="#{bundle.ViewLogsolicitudTitle_idcliente}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{logsolicitudController.destroyAndView}" value="#{bundle.ViewLogsolicitudDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewLogsolicitudEditLink}"/>
+                <br />
+                <h:commandLink action="#{logsolicitudController.prepareCreate}" value="#{bundle.ViewLogsolicitudCreateLink}" />
+                <br />
+                <h:commandLink action="#{logsolicitudController.prepareList}" value="#{bundle.ViewLogsolicitudShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewLogsolicitudIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

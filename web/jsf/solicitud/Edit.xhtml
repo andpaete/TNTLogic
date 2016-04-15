@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSolicitudTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSolicitudLabel_idsolicitud}" for="idsolicitud" />
+                    <h:inputText id="idsolicitud" value="#{solicitudController.selected.idsolicitud}" title="#{bundle.EditSolicitudTitle_idsolicitud}" required="true" requiredMessage="#{bundle.EditSolicitudRequiredMessage_idsolicitud}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitudLabel_idclienteorigen}" for="idclienteorigen" />
+                    <h:inputText id="idclienteorigen" value="#{solicitudController.selected.idclienteorigen}" title="#{bundle.EditSolicitudTitle_idclienteorigen}" required="true" requiredMessage="#{bundle.EditSolicitudRequiredMessage_idclienteorigen}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitudLabel_idestado}" for="idestado" />
+                    <h:inputText id="idestado" value="#{solicitudController.selected.idestado}" title="#{bundle.EditSolicitudTitle_idestado}" required="true" requiredMessage="#{bundle.EditSolicitudRequiredMessage_idestado}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitudLabel_idclientedestino}" for="idclientedestino" />
+                    <h:inputText id="idclientedestino" value="#{solicitudController.selected.idclientedestino}" title="#{bundle.EditSolicitudTitle_idclientedestino}" required="true" requiredMessage="#{bundle.EditSolicitudRequiredMessage_idclientedestino}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitudLabel_idvehiculo}" for="idvehiculo" />
+                    <h:selectOneMenu id="idvehiculo" value="#{solicitudController.selected.idvehiculo}" title="#{bundle.EditSolicitudTitle_idvehiculo}" >
+                        <f:selectItems value="#{vehiculoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitudLabel_idsede}" for="idsede" />
+                    <h:selectOneMenu id="idsede" value="#{solicitudController.selected.idsede}" title="#{bundle.EditSolicitudTitle_idsede}" required="true" requiredMessage="#{bundle.EditSolicitudRequiredMessage_idsede}">
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{solicitudController.update}" value="#{bundle.EditSolicitudSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSolicitudViewLink}"/>
+                <br />
+                <h:commandLink action="#{solicitudController.prepareList}" value="#{bundle.EditSolicitudShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSolicitudIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

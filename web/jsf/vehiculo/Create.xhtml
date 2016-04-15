@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateVehiculoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_idvehiculo}" for="idvehiculo" />
+                    <h:inputText id="idvehiculo" value="#{vehiculoController.selected.idvehiculo}" title="#{bundle.CreateVehiculoTitle_idvehiculo}" required="true" requiredMessage="#{bundle.CreateVehiculoRequiredMessage_idvehiculo}"/>
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_placa}" for="placa" />
+                    <h:inputText id="placa" value="#{vehiculoController.selected.placa}" title="#{bundle.CreateVehiculoTitle_placa}" required="true" requiredMessage="#{bundle.CreateVehiculoRequiredMessage_placa}"/>
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_marca}" for="marca" />
+                    <h:inputText id="marca" value="#{vehiculoController.selected.marca}" title="#{bundle.CreateVehiculoTitle_marca}" required="true" requiredMessage="#{bundle.CreateVehiculoRequiredMessage_marca}"/>
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_modelo}" for="modelo" />
+                    <h:inputText id="modelo" value="#{vehiculoController.selected.modelo}" title="#{bundle.CreateVehiculoTitle_modelo}" required="true" requiredMessage="#{bundle.CreateVehiculoRequiredMessage_modelo}"/>
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_pesomax}" for="pesomax" />
+                    <h:inputText id="pesomax" value="#{vehiculoController.selected.pesomax}" title="#{bundle.CreateVehiculoTitle_pesomax}" required="true" requiredMessage="#{bundle.CreateVehiculoRequiredMessage_pesomax}"/>
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_volumenmax}" for="volumenmax" />
+                    <h:inputText id="volumenmax" value="#{vehiculoController.selected.volumenmax}" title="#{bundle.CreateVehiculoTitle_volumenmax}" required="true" requiredMessage="#{bundle.CreateVehiculoRequiredMessage_volumenmax}"/>
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_conductor}" for="conductor" />
+                    <h:inputText id="conductor" value="#{vehiculoController.selected.conductor}" title="#{bundle.CreateVehiculoTitle_conductor}" required="true" requiredMessage="#{bundle.CreateVehiculoRequiredMessage_conductor}"/>
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_fechacrea}" for="fechacrea" />
+                    <h:inputText id="fechacrea" value="#{vehiculoController.selected.fechacrea}" title="#{bundle.CreateVehiculoTitle_fechacrea}" required="true" requiredMessage="#{bundle.CreateVehiculoRequiredMessage_fechacrea}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_idsede}" for="idsede" />
+                    <h:selectOneMenu id="idsede" value="#{vehiculoController.selected.idsede}" title="#{bundle.CreateVehiculoTitle_idsede}" required="true" requiredMessage="#{bundle.CreateVehiculoRequiredMessage_idsede}">
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_idestado}" for="idestado" />
+                    <h:selectOneMenu id="idestado" value="#{vehiculoController.selected.idestado}" title="#{bundle.CreateVehiculoTitle_idestado}" required="true" requiredMessage="#{bundle.CreateVehiculoRequiredMessage_idestado}">
+                        <f:selectItems value="#{estadovehiculoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{vehiculoController.create}" value="#{bundle.CreateVehiculoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{vehiculoController.prepareList}" value="#{bundle.CreateVehiculoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateVehiculoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

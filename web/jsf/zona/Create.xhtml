@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+     <h:head>
+        <title>Facelet Title</title>
+        <a href="../../../src/java/Bundle.properties"></a>
+    </h:head>
+    <h:body>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateZonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateZonaLabel_idzona}" for="idzona" />
+                    <h:inputText id="idzona" value="#{zonaController.selected.idzona}" title="#{bundle.CreateZonaTitle_idzona}" required="true" requiredMessage="#{bundle.CreateZonaRequiredMessage_idzona}"/>
+                    <h:outputLabel value="#{bundle.CreateZonaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{zonaController.selected.nombre}" title="#{bundle.CreateZonaTitle_nombre}" required="true" requiredMessage="#{bundle.CreateZonaRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateZonaLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{zonaController.selected.estado}" title="#{bundle.CreateZonaTitle_estado}" required="true" requiredMessage="#{bundle.CreateZonaRequiredMessage_estado}"/>
+                    <h:outputLabel value="#{bundle.CreateZonaLabel_idsede}" for="idsede" />
+                    <h:selectOneMenu id="idsede" value="#{zonaController.selected.idsede}" title="#{bundle.CreateZonaTitle_idsede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{zonaController.create}" value="#{bundle.CreateZonaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{zonaController.prepareList}" value="#{bundle.CreateZonaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateZonaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </h:body>
+</html>

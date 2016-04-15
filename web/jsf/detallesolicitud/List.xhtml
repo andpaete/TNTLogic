@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDetallesolicitudTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDetallesolicitudEmpty}" rendered="#{detallesolicitudController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{detallesolicitudController.items.rowCount > 0}">
+                    <h:outputText value="#{detallesolicitudController.pagination.pageFirstItem + 1}..#{detallesolicitudController.pagination.pageLastItem + 1}/#{detallesolicitudController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{detallesolicitudController.previous}" value="#{bundle.Previous} #{detallesolicitudController.pagination.pageSize}" rendered="#{detallesolicitudController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{detallesolicitudController.next}" value="#{bundle.Next} #{detallesolicitudController.pagination.pageSize}" rendered="#{detallesolicitudController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{detallesolicitudController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetallesolicitudTitle_iddetallesolicitud}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.iddetallesolicitud}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetallesolicitudTitle_distancia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.distancia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetallesolicitudTitle_costotransporte}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.costotransporte}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetallesolicitudTitle_idsolicitud}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idsolicitud}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetallesolicitudTitle_idmercancia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idmercancia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{detallesolicitudController.prepareView}" value="#{bundle.ListDetallesolicitudViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{detallesolicitudController.prepareEdit}" value="#{bundle.ListDetallesolicitudEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{detallesolicitudController.destroy}" value="#{bundle.ListDetallesolicitudDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{detallesolicitudController.prepareCreate}" value="#{bundle.ListDetallesolicitudCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDetallesolicitudIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

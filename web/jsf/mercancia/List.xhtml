@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMercanciaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMercanciaEmpty}" rendered="#{mercanciaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{mercanciaController.items.rowCount > 0}">
+                    <h:outputText value="#{mercanciaController.pagination.pageFirstItem + 1}..#{mercanciaController.pagination.pageLastItem + 1}/#{mercanciaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{mercanciaController.previous}" value="#{bundle.Previous} #{mercanciaController.pagination.pageSize}" rendered="#{mercanciaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{mercanciaController.next}" value="#{bundle.Next} #{mercanciaController.pagination.pageSize}" rendered="#{mercanciaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{mercanciaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMercanciaTitle_idmercancia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idmercancia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMercanciaTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMercanciaTitle_peso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.peso}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMercanciaTitle_volumen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.volumen}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{mercanciaController.prepareView}" value="#{bundle.ListMercanciaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mercanciaController.prepareEdit}" value="#{bundle.ListMercanciaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mercanciaController.destroy}" value="#{bundle.ListMercanciaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{mercanciaController.prepareCreate}" value="#{bundle.ListMercanciaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMercanciaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

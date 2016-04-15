@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/singin.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        
+        <div class="container">
+            <form class="form-signin" action="" method="post">
+                <h2 class="form-signin-heading">Ingreso Tnt inventario</h2>
+                <label for="inputUserName" class="sr-only">User Name</label>
+                <input id="inputUserName" name="inputUserName" class="form-control" placeholder="User Name" required="" autofocus="" type="text"></input>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input id="inputPassword"  name="inputPassword" class="form-control" placeholder="Password" required="" type="password"></input>
+                <div class="checkbox">
+                    <label>
+                        <input value="remember-me" type="checkbox"></input> Recordarme
+                    </label>
+                </div>
+                <button id="btnInciar" class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+            </form>
+            <h:link class="btn btn-lg btn-primary btn-block"  outcome="index" value="index"/>
+        </div>
+       
+       <!--Hello from Facelets <h:link outcome="/jsf/clientes/List" value="Show All Clientes Items"/>
+        <br />
+        <h:link outcome="/jsf/departamento/List" value="Show All Departamento Items"/>
+        <br />
+        <h:link outcome="/jsf/detallesolicitud/List" value="Show All Detallesolicitud Items"/>
+        <br />
+        <h:link outcome="/jsf/estadosolicitud/List" value="Show All Estadosolicitud Items"/>
+        <br />
+        <h:link outcome="/jsf/estadovehiculo/List" value="Show All Estadovehiculo Items"/>
+        <br />
+        <h:link outcome="/jsf/logsolicitud/List" value="Show All Logsolicitud Items"/>
+        <br />
+        <h:link outcome="/jsf/mercancia/List" value="Show All Mercancia Items"/>
+        <br />
+        <h:link outcome="/jsf/perfil/List" value="Show All Perfil Items"/>
+        <br />
+        <h:link outcome="/jsf/sede/List" value="Show All Sede Items"/>
+        <br />
+        <h:link outcome="/jsf/sedeCiudades/List" value="Show All SedeCiudades Items"/>
+        <br />
+        <h:link outcome="/jsf/solicitud/List" value="Show All Solicitud Items"/>
+        <br />
+        <h:link outcome="/jsf/usuario/List" value="Show All Usuario Items"/>
+        <br />
+        <h:link outcome="/jsf/vehiculo/List" value="Show All Vehiculo Items"/>
+        <br />
+        <h:link outcome="/jsf/zona/List" value="Show All Zona Items"/>-->
+       
+       <script src="resources/js/jquery.js" type="text/javascript"></script>
+       <script type="text/javascript">
+           function redi(){
+               document.location = "index.xhtml";
+           }
+       </script>
+    </h:body>
+</html>
+
